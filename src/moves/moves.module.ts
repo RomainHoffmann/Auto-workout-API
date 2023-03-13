@@ -8,5 +8,6 @@ import { MovesService } from './moves.service';
   imports: [DatabaseModule],
   controllers: [MovesController],
   providers: [...movesProviders, MovesService],
+  exports: [MovesService],
 })
 export class MovesModule {}

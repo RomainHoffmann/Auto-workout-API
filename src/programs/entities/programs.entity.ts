@@ -1,4 +1,5 @@
 import { Exercise } from 'src/exercises/entities/exercises.entity';
+import { User } from 'src/users/entities/users.entity';
 import {
   Entity,
   Column,
@@ -22,4 +23,10 @@ export class Program {
     onDelete: 'CASCADE',
   })
   exercises: Exercise[];
+
+  @ManyToOne(() => User, (user) => user.programs, { onDelete: 'CASCADE' })
+  user: User;
+
+  @Column()
+  userId: number;
 }

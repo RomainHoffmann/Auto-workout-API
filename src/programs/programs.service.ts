@@ -34,8 +34,9 @@ export class ProgramsService {
     return await this.programRepository.save(program);
   }
 
-  async findAll(): Promise<Program[]> {
+  async findAll(userId: number): Promise<Program[]> {
     return await this.programRepository.find({
+      where: { userId: userId },
       relations: {
         exercises: {
           move: true,

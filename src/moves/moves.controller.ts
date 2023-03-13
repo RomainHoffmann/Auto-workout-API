@@ -1,9 +1,19 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 import { CreateMoveDto } from './dto/create-move.dto';
 import { UpdateMoveDto } from './dto/update-move.dto';
 import { Move } from './entities/moves.entity';
 import { MovesService } from './moves.service';
 
+@UseGuards(JwtAuthGuard)
 @Controller('moves')
 export class MovesController {
   constructor(private movesService: MovesService) {}
